@@ -1,23 +1,31 @@
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class ParkingLotTest
-{
+class ParkingLotTest {
     @Test
-    fun `it should return true if there is availability of spot in parkingLot`(){
-        val parkingSpots= mutableListOf(SpotStatus.FREE)
+    fun `should return spot id of available spot in parkingLot`() {
+        val parkingSpots = MutableList(100) { SpotStatus.FREE }
 
-        val isSpotAvailable= ParkingLot(parkingSpots).isSpotAvailable()
+        val spotNo = ParkingLot(parkingSpots).getAvailableSpot()
 
-        assertEquals(true,isSpotAvailable)
+        assertEquals(1, spotNo)
     }
 
     @Test
-    fun `it should return false if there is no availability of spot in parkingLot`(){
-        val parkingSpots= mutableListOf(SpotStatus.BOOKED)
+    fun `should return null if there is no availability of spot in parkingLot`() {
+        val parkingSpots = MutableList(100) { SpotStatus.BOOKED }
 
-        val isSpotAvailable= ParkingLot(parkingSpots).isSpotAvailable()
+        val spotNo = ParkingLot(parkingSpots).getAvailableSpot()
 
-        assertEquals(false,isSpotAvailable)
+        assertEquals(null, spotNo)
+    }
+
+    @Test
+    fun `should book a spot`() {
+        val parkingSpots = MutableList(100) { SpotStatus.FREE }
+
+        ParkingLot(parkingSpots).bookASpot(1)
+
+        assertEquals(parkingSpots[0], SpotStatus.BOOKED)
     }
 }
