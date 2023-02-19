@@ -12,4 +12,8 @@ class ParkingLot(private val parkingSpots: MutableList<SpotStatus>) {
         parkingSpots[spotNo - 1] = SpotStatus.BOOKED
     }
 
+    fun freeASpot(spotNo: Int) {
+        parkingSpots[spotNo - 1] = SpotStatus.FREE
+    }
+
 }

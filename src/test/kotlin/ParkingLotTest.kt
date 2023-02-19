@@ -28,4 +28,13 @@ class ParkingLotTest {
 
         assertEquals(parkingSpots[0], SpotStatus.BOOKED)
     }
+
+    @Test
+    fun `should free spot`() {
+        val parkingSpots = MutableList(100) { SpotStatus.BOOKED }
+
+        ParkingLot(parkingSpots).freeASpot(1)
+
+        assertEquals(parkingSpots[0], SpotStatus.FREE)
+    }
 }
