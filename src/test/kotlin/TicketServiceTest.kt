@@ -14,4 +14,14 @@ class TicketServiceTest {
         assertEquals(1, ticket.ticketNo)
         assertEquals(99, ticket.spotNo)
     }
+
+    @Test
+    fun `should save a ticket`() {
+        val tickets = mutableListOf<Ticket>()
+        val entryDateAndTime = Date()
+
+        TicketService(tickets).generateTicket(99, entryDateAndTime)
+
+        assertEquals(1, tickets.size)
+    }
 }

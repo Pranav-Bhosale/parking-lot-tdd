@@ -1,3 +1,3 @@
 enum class SpotStatus {
-    FREE,BOOKED
+    FREE, BOOKED
 }
