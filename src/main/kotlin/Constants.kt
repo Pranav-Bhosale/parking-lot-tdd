@@ -1,1 +1,2 @@
 const val FEES_PER_HOUR = 10
+const val PARKING_LOT_SIZE=100
