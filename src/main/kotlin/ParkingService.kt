@@ -11,7 +11,7 @@ class ParkingService(
             ParkingLot(parkingSpots).bookASpot(spotNo)
             TicketService(tickets).generateTicket(spotNo, LocalDateTime.now())
         } else {
-            null// TODO:  error
+            return null
         }
     }
 
