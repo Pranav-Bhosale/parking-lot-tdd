@@ -1,0 +1,1 @@
+const val FEES_PER_HOUR = 10

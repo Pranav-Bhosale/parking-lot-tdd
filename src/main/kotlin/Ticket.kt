@@ -1,3 +1,3 @@
-import java.util.Date
+import java.time.LocalDateTime
 
-data class Ticket(val spotNo: Int, val entryDateTime: Date, val ticketNo:Int)
+data class Ticket(val spotNo: Int, val entryDateTime: LocalDateTime, val ticketNo: Int)
