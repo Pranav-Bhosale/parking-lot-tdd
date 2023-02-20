@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 
 class ParkingLotTest {
@@ -27,6 +28,24 @@ class ParkingLotTest {
         ParkingLot(parkingSpots).bookASpot(1)
 
         assertEquals(parkingSpots[0], SpotStatus.BOOKED)
+    }
+
+    @Test
+    fun `should throw exception while booking if the spot does not exist`()
+    {
+        val parkingSpots = MutableList(PARKING_LOT_SIZE) { SpotStatus.FREE }
+
+        assertThrows<CustomException> {  ParkingLot(parkingSpots).bookASpot(101)}
+
+    }
+
+    @Test
+    fun `should throw exception while free the spot that does not exist`()
+    {
+        val parkingSpots = MutableList(PARKING_LOT_SIZE) { SpotStatus.FREE }
+
+        assertThrows<CustomException> {  ParkingLot(parkingSpots).freeASpot(101)}
+
     }
 
     @Test

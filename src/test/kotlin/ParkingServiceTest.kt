@@ -10,7 +10,7 @@ class ParkingServiceTest {
         val tickets = mutableListOf<Ticket>()
         val receipts = mutableListOf<Receipt>()
 
-        val ticket = ParkingService(parkingSpots, tickets, receipts).park()
+        ParkingService(parkingSpots, tickets, receipts).park()
 
         assertEquals(SpotStatus.BOOKED, parkingSpots[0])
         assertEquals(1, tickets.size)

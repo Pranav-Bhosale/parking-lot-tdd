@@ -8,15 +8,23 @@ class ParkingService(
     fun park(): Ticket? {
         val spotNo = ParkingLot(parkingSpots).getAvailableSpot()
         return if (spotNo != null) {
-            ParkingLot(parkingSpots).bookASpot(spotNo)
+            try {
+                ParkingLot(parkingSpots).bookASpot(spotNo)
+            } catch (e: CustomException) {
+                println(e)
+            }
             TicketService(tickets).generateTicket(spotNo, LocalDateTime.now())
         } else {
-            return null
+            null
         }
     }
 
     fun unPark(ticket: Ticket): Receipt {
-        ParkingLot(parkingSpots).freeASpot(ticket.spotNo)
+        try {
+            ParkingLot(parkingSpots).freeASpot(ticket.spotNo)
+        } catch (e: CustomException) {
+            println(e)
+        }
         return ReceiptService(receipts).generateReceipt(ticket, LocalDateTime.now())
 
     }

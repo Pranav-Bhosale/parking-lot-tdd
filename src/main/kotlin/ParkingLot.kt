@@ -9,10 +9,18 @@ class ParkingLot(private val parkingSpots: MutableList<SpotStatus>) {
     }
 
     fun bookASpot(spotNo: Int) {
+        if(spotNo>parkingSpots.size)
+        {
+            throw CustomException("Spot does not exist")
+        }
         parkingSpots[spotNo - 1] = SpotStatus.BOOKED
     }
 
     fun freeASpot(spotNo: Int) {
+        if(spotNo>parkingSpots.size)
+        {
+          throw CustomException("Spot does not exist")
+        }
         parkingSpots[spotNo - 1] = SpotStatus.FREE
     }
 
